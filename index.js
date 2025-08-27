@@ -66,3 +66,22 @@ clearHistoryBtn.addEventListener('click', function(event) {
     event.preventDefault()
   historyList.innerHTML = "";
 });
+
+const copyButtons = document.getElementsByClassName('copy-btn');
+
+for (let i = 0; i < copyButtons.length; i++) {
+  copyButtons[i].addEventListener('click', function(event) {
+    event.preventDefault();
+     const card = this.parentElement.parentElement;
+    const serviceNumber = card.querySelector('.service-number').innerText;
+     navigator.clipboard.writeText(serviceNumber).then(() => {
+      alert(`Hotline number ${serviceNumber} copied!`);
+       });
+
+     const copyCount = parseInt(document.getElementById('copy-count').innerText);
+    const new_copy_count=copyCount+1;
+    document.getElementById('copy-count').innerText =new_copy_count;
+  
+  })
+
+  }
